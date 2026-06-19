@@ -1,0 +1,7 @@
+series,model,arima_order,diagnostic_test,lag,fit_df,statistic,p_value,null_hypothesis,interpretation,error
+influenza_percent_positive,ARIMA,"3,0,0",Ljung-Box test,10,3,6.842860436252369,0.44542268634464566,Model residuals are independently distributed with no remaining autocorrelation.,Fail to reject H0: no strong evidence of residual autocorrelation.,NA
+influenza_percent_positive,SARIMA,"3,0,0",Ljung-Box test,10,3,6.842860436252369,0.44542268634464566,Model residuals are independently distributed with no remaining autocorrelation.,Fail to reject H0: no strong evidence of residual autocorrelation.,NA
+rsv_percent_positive,ARIMA,"1,2,1",Ljung-Box test,10,2,8.823656826639784,0.35738989780085517,Model residuals are independently distributed with no remaining autocorrelation.,Fail to reject H0: no strong evidence of residual autocorrelation.,NA
+rsv_percent_positive,SARIMA,"1,2,1",Ljung-Box test,10,2,8.823656826639784,0.35738989780085517,Model residuals are independently distributed with no remaining autocorrelation.,Fail to reject H0: no strong evidence of residual autocorrelation.,NA
+covid19_percent_positive,ARIMA,"4,1,1",Ljung-Box test,10,5,12.577548700525986,0.02767616061711875,Model residuals are independently distributed with no remaining autocorrelation.,Reject H0: residual autocorrelation may remain.,NA
+covid19_percent_positive,SARIMA,"4,1,1",Ljung-Box test,10,5,12.577548700525986,0.02767616061711875,Model residuals are independently distributed with no remaining autocorrelation.,Reject H0: residual autocorrelation may remain.,NA

@@ -1,0 +1,14 @@
+Variable,Description,Format,Values
+Jurisdiction,Reporting country,Text,Canada
+Surveillance year,Reporting year,Numeric,YYYY
+Surveillance week,Reporting week,Numeric,WW. Refer to online calendar for surveillance week date periods
+Week ending date,Date of the last day of the surveillance week. Surveillance weeks run from Sunday to Saturday.,Date,YYYY-MM-DD
+Year_Week,Reporting year and week,Numeric,"YYYYWW (Six digit code for year and epiweek. The first 4 digits is 
+the year and last two digit is the week number. For 
+example: 202535 or 202602)"
+Virus,Name of respiratory viruses under surveillance.,Text,"COVID-19
+Influenza
+RSV"
+Tests,Number of specimen tested.,Numeric,NA
+Detections,Number of specimen positive for indicated virus.,Numeric,NA
+Percent of tests positive,(Number of positivie specimen/ number of specimen tested) *100,Numeric,NA

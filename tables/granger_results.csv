@@ -1,0 +1,25 @@
+caused,causing,lag,f_statistic,p_value,interpretation_note,error
+influenza_percent_positive,rsv_percent_positive,1,0.9610159766137837,0.33313143438669757,Predictive lead-lag association only; not evidence of biological causation.,NA
+influenza_percent_positive,rsv_percent_positive,2,1.590829539156425,0.21813826486787402,Predictive lead-lag association only; not evidence of biological causation.,NA
+influenza_percent_positive,rsv_percent_positive,3,0.9053404517515711,0.44933931531426874,Predictive lead-lag association only; not evidence of biological causation.,NA
+influenza_percent_positive,rsv_percent_positive,4,0.6621886003967337,0.6232851224656231,Predictive lead-lag association only; not evidence of biological causation.,NA
+influenza_percent_positive,covid19_percent_positive,1,0.6023689415812653,0.44247966312417963,Predictive lead-lag association only; not evidence of biological causation.,NA
+influenza_percent_positive,covid19_percent_positive,2,0.14493717035212028,0.8655931625464339,Predictive lead-lag association only; not evidence of biological causation.,NA
+influenza_percent_positive,covid19_percent_positive,3,1.650385885134929,0.19731004767366045,Predictive lead-lag association only; not evidence of biological causation.,NA
+influenza_percent_positive,covid19_percent_positive,4,1.189406867828059,0.3363252429039919,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,influenza_percent_positive,1,6.025588948780061,0.018791393378592147,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,influenza_percent_positive,2,5.196874019716356,0.010562337198030016,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,influenza_percent_positive,3,10.246286852600173,6.984378250424786e-5,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,influenza_percent_positive,4,7.403550209641411,3.084356329785053e-4,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,covid19_percent_positive,1,6.471988588551304,0.015146861143764866,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,covid19_percent_positive,2,0.2180971691567189,0.8051317769442728,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,covid19_percent_positive,3,0.29434224179747687,0.829174336545476,Predictive lead-lag association only; not evidence of biological causation.,NA
+rsv_percent_positive,covid19_percent_positive,4,0.36119158032845,0.8341350327361019,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,influenza_percent_positive,1,0.3295142398623332,0.5693277455356107,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,influenza_percent_positive,2,0.7751142495326447,0.4683969838705321,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,influenza_percent_positive,3,0.8058983955083736,0.49991100841371205,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,influenza_percent_positive,4,1.6402282657665146,0.19096207436577706,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,rsv_percent_positive,1,0.7025518232218558,0.40716903937874394,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,rsv_percent_positive,2,1.8405710105975237,0.17376137371999686,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,rsv_percent_positive,3,1.4345064178007612,0.25093520147812776,Predictive lead-lag association only; not evidence of biological causation.,NA
+covid19_percent_positive,rsv_percent_positive,4,2.003574905778686,0.12032705215572471,Predictive lead-lag association only; not evidence of biological causation.,NA

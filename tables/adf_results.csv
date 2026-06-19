@@ -1,0 +1,4 @@
+series,adf_statistic,p_value,method,error
+influenza_percent_positive,-1.9322002980027753,0.6003546322417125,Augmented Dickey-Fuller Test,NA
+rsv_percent_positive,-1.7957720641031096,0.6541300496243162,Augmented Dickey-Fuller Test,NA
+covid19_percent_positive,-2.9361848610643824,0.20461771341569476,Augmented Dickey-Fuller Test,NA

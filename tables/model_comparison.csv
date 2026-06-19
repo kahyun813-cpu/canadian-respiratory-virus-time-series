@@ -1,0 +1,7 @@
+series,model,arima_order,n_train,n_test,mae,rmse,error
+covid19_percent_positive,ARIMA,"1,1,0",34,8,1.1750000000000003,1.234908903522847,NA
+covid19_percent_positive,SARIMA,"1,1,0",34,8,1.1750000000000003,1.234908903522847,NA
+rsv_percent_positive,ARIMA,"0,1,4",34,8,1.6666061761799478,1.804040904022197,NA
+rsv_percent_positive,SARIMA,"0,1,4",34,8,1.6666061761799478,1.804040904022197,NA
+influenza_percent_positive,ARIMA,"3,0,0",34,8,2.012729739765482,2.21403798253385,NA
+influenza_percent_positive,SARIMA,"3,0,0",34,8,2.012729739765482,2.21403798253385,NA

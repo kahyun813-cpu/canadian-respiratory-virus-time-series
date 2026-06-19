@@ -34,14 +34,7 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Generated outputs
-figures/*.png
-figures/*.jpg
-figures/*.jpeg
-figures/*.pdf
-tables/*.csv
-tables/*.xlsx
-!tables/.gitkeep
+# Generated report files
 reports/*.pdf
 reports/*.docx
 
