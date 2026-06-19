@@ -44,7 +44,7 @@ On this Windows machine, `Rscript` may need the full path:
 - `scripts/run_analysis.R`: main script that runs the full workflow
 - `R/preprocessing.R`: load, inspect, and clean data
 - `R/visualization.R`: create EDA plots
-- `R/modeling.R`: ADF tests, ARIMA/SARIMA, VAR, Granger tests
+- `R/modeling.R`: ADF tests, ARIMA/SARIMA, Ljung-Box residual diagnostics, VAR, Granger tests
 - `R/evaluation.R`: train/test split and MAE/RMSE helpers
 
 ## Outputs
@@ -68,11 +68,12 @@ Tables:
 - `tables/data_dictionary_lab_summary.csv`
 - `tables/adf_results.csv`
 - `tables/model_comparison.csv`
+- `tables/residual_diagnostics.csv`
 - `tables/var_results.csv`
 - `tables/granger_results.csv`
 
 ## Notes
 
-The target variable is percent positivity when available. Granger causality results are interpreted only as predictive lead-lag associations, not biological causation.
+The target variable is percent positivity when available. The Ljung-Box test checks whether ARIMA/SARIMA residual autocorrelation remains. Granger causality results are interpreted only as predictive lead-lag associations, not biological causation.
 
 The written report is prepared separately after reviewing the generated figures and tables.

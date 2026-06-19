@@ -104,6 +104,84 @@ fit_arima_sarima_models <- function(weekly_wide, test_size = 8) {
   results
 }
 
+# Run Ljung-Box residual diagnostics for fitted ARIMA/SARIMA models.
+run_residual_diagnostics <- function(weekly_wide, ljung_box_lag = 10) {
+  model_columns <- setdiff(
+    names(weekly_wide),
+    c("week_ending_date", "epi_year", "epi_week")
+  )
+
+  results <- purrr::map_dfr(model_columns, function(column_name) {
+    values <- stats::na.omit(as.numeric(weekly_wide[[column_name]]))
+    full_ts <- stats::ts(values, frequency = 52)
+
+    model_specs <- list(
+      ARIMA = list(seasonal = FALSE),
+      SARIMA = list(seasonal = TRUE)
+    )
+
+    purrr::imap_dfr(model_specs, function(spec, model_name) {
+      tryCatch(
+        {
+          fitted_model <- forecast::auto.arima(
+            full_ts,
+            seasonal = spec$seasonal,
+            stepwise = FALSE,
+            approximation = FALSE
+          )
+
+          residuals <- stats::na.omit(as.numeric(stats::residuals(fitted_model)))
+          test_lag <- min(ljung_box_lag, length(residuals) - 1)
+          fit_df <- min(length(stats::coef(fitted_model)), test_lag - 1)
+
+          test_result <- stats::Box.test(
+            residuals,
+            lag = test_lag,
+            type = "Ljung-Box",
+            fitdf = fit_df
+          )
+
+          tibble::tibble(
+            series = column_name,
+            model = model_name,
+            arima_order = paste(forecast::arimaorder(fitted_model), collapse = ","),
+            diagnostic_test = "Ljung-Box test",
+            lag = test_lag,
+            fit_df = fit_df,
+            statistic = unname(test_result$statistic),
+            p_value = test_result$p.value,
+            null_hypothesis = "Model residuals are independently distributed with no remaining autocorrelation.",
+            interpretation = dplyr::if_else(
+              test_result$p.value < 0.05,
+              "Reject H0: residual autocorrelation may remain.",
+              "Fail to reject H0: no strong evidence of residual autocorrelation."
+            ),
+            error = NA_character_
+          )
+        },
+        error = function(e) {
+          tibble::tibble(
+            series = column_name,
+            model = model_name,
+            arima_order = NA_character_,
+            diagnostic_test = "Ljung-Box test",
+            lag = NA_integer_,
+            fit_df = NA_integer_,
+            statistic = NA_real_,
+            p_value = NA_real_,
+            null_hypothesis = "Model residuals are independently distributed with no remaining autocorrelation.",
+            interpretation = NA_character_,
+            error = conditionMessage(e)
+          )
+        }
+      )
+    })
+  })
+
+  readr::write_csv(results, here::here("tables", "residual_diagnostics.csv"))
+  results
+}
+
 # Fit a VAR model if enough complete multivariate observations are available.
 fit_var_model <- function(weekly_wide, max_lag = 4) {
   model_columns <- setdiff(

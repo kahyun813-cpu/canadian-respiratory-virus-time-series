@@ -67,6 +67,7 @@ eda_plots <- create_eda_plots(
 
 adf_results <- run_adf_tests(weekly_data$wide)
 model_comparison <- fit_arima_sarima_models(weekly_data$wide, test_size = 8)
+residual_diagnostics <- run_residual_diagnostics(weekly_data$wide, ljung_box_lag = 10)
 var_results <- fit_var_model(weekly_data$wide, max_lag = 4)
 granger_results <- run_granger_tests(weekly_data$wide, max_lag = 4)
 
