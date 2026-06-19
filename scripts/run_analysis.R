@@ -7,7 +7,6 @@ required_packages <- c(
   "tidyverse",
   "lubridate",
   "readxl",
-  "janitor",
   "forecast",
   "tseries",
   "vars",
@@ -18,7 +17,15 @@ required_packages <- c(
 )
 
 missing_packages <- required_packages[
-  !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
+  !vapply(
+    required_packages,
+    function(package_name) {
+      suppressMessages(
+        suppressWarnings(requireNamespace(package_name, quietly = TRUE))
+      )
+    },
+    logical(1)
+  )
 ]
 
 if (length(missing_packages) > 0) {
@@ -27,18 +34,6 @@ if (length(missing_packages) > 0) {
     paste(missing_packages, collapse = ", ")
   )
 }
-
-library(tidyverse)
-library(lubridate)
-library(readxl)
-library(janitor)
-library(forecast)
-library(tseries)
-library(vars)
-library(lmtest)
-library(ggplot2)
-library(zoo)
-library(here)
 
 dir.create(here::here("data", "processed"), recursive = TRUE, showWarnings = FALSE)
 dir.create(here::here("figures"), recursive = TRUE, showWarnings = FALSE)
@@ -65,7 +60,7 @@ weekly_data <- build_weekly_lab_timeseries(
   selected_viruses = c("Influenza", "RSV", "SARS-CoV-2")
 )
 
-create_eda_plots(
+eda_plots <- create_eda_plots(
   weekly_long = weekly_data$long,
   weekly_wide = weekly_data$wide
 )

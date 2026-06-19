@@ -18,6 +18,8 @@ env/
 .Rhistory
 .RData
 .Ruserdata
+Rplots.pdf
+.r_tmp/
 renv/library/
 renv/staging/
 *.Rproj.user/

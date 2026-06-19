@@ -85,10 +85,10 @@ choose_target_variable <- function(lab_data) {
 
   for (column_name in preferred_columns) {
     if (column_name %in% names(lab_data)) {
-      message("Selected target variable: ", column_name)
+      cat("\nSelected target variable:", column_name, "\n")
 
       if (column_name != "Percent of tests positive") {
-        message("TODO: Verify this fallback target using the data dictionary.")
+        cat("TODO: Verify this fallback target using the data dictionary.\n")
       }
 
       return(column_name)
