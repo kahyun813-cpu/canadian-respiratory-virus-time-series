@@ -17,6 +17,12 @@ Important interpretation note: Granger causality results are labeled as predicti
 
 ## Data Source
 
+Data can be downloaded from the Government of Canada Health Infobase page:
+
+- [Canadian respiratory virus surveillance report: Explore the data](https://health-infobase.canada.ca/respiratory-virus-surveillance/explore.html)
+
+Use the page's **Download the data** section to download the laboratory data CSV, clinical data CSV, and data dictionary XLSX. The main analysis begins with the laboratory data file.
+
 Place downloaded raw files in `data/raw/`.
 
 Expected files:
@@ -26,6 +32,8 @@ Expected files:
 - `Data_Dictionary.xlsx`
 
 Raw data files may need to be downloaded separately depending on file size, licensing, and data portal terms. Raw data are ignored by Git by default.
+
+The source page notes that these surveillance data may change retrospectively because of reporting delays and updates. For reproducibility, record the download date and keep the downloaded file names unchanged when running this project.
 
 ## R Packages
 
@@ -77,6 +85,22 @@ The script:
 13. Runs Granger predictive lead-lag tests with `lmtest`.
 14. Saves model comparison and Granger results to `tables/`.
 
+## Code Organization
+
+The project uses a modular R structure so the analysis is easier to read, test, and revise.
+
+- `scripts/run_analysis.R` is the main script. It loads packages, creates output folders, sources the helper files, and runs the full workflow from raw data to saved outputs.
+- `R/preprocessing.R` contains functions for loading the laboratory data, reading the data dictionary, inspecting variables, choosing the target variable, and building cleaned weekly datasets.
+- `R/visualization.R` contains functions for creating EDA plots with `ggplot2` and saving them to `figures/`.
+- `R/modeling.R` contains functions for ADF tests, ARIMA/SARIMA modeling with `forecast::auto.arima()`, VAR modeling, and Granger predictive lead-lag tests.
+- `R/evaluation.R` contains helper functions for chronological train/test splitting and forecast accuracy metrics such as MAE and RMSE.
+
+The helper files are sourced by `scripts/run_analysis.R`, so users only need to run one command:
+
+```bash
+Rscript scripts/run_analysis.R
+```
+
 ## Repository Structure
 
 ```text
@@ -96,7 +120,6 @@ canadian-respiratory-virus-time-series/
 |-- figures/
 |-- tables/
 `-- reports/
-    `-- report.pdf
 ```
 
 ## Planned Outputs
@@ -128,3 +151,5 @@ TODO: Review the generated figures and tables, then summarize observed seasonal 
 ## Reproducibility Notes
 
 All analysis paths are relative to the project root through `here::here()`. The workflow should continue to work if the repository folder is moved to another location.
+
+The final written report is not generated automatically by the code. It can be written separately after reviewing the figures and tables produced by the analysis pipeline.
